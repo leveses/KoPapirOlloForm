@@ -33,8 +33,6 @@
             this.lbl_gep = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.listBox1 = new System.Windows.Forms.ListBox();
-            this.listBox2 = new System.Windows.Forms.ListBox();
             this.lbl_gyoztes = new System.Windows.Forms.Label();
             this.btn_ollo = new System.Windows.Forms.Button();
             this.btn_papir = new System.Windows.Forms.Button();
@@ -44,9 +42,13 @@
             this.btn_uj = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.pb_gep = new System.Windows.Forms.PictureBox();
+            this.pb_jatekos = new System.Windows.Forms.PictureBox();
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pb_gep)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pb_jatekos)).BeginInit();
             this.panel3.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -56,9 +58,9 @@
             this.lbl_jatekos.Location = new System.Drawing.Point(27, 17);
             this.lbl_jatekos.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl_jatekos.Name = "lbl_jatekos";
-            this.lbl_jatekos.Size = new System.Drawing.Size(65, 20);
+            this.lbl_jatekos.Size = new System.Drawing.Size(69, 20);
             this.lbl_jatekos.TabIndex = 0;
-            this.lbl_jatekos.Text = "Játékos";
+            this.lbl_jatekos.Text = "Játékos:";
             // 
             // label2
             // 
@@ -75,14 +77,14 @@
             this.lbl_gep.AutoSize = true;
             this.lbl_gep.Location = new System.Drawing.Point(284, 17);
             this.lbl_gep.Name = "lbl_gep";
-            this.lbl_gep.Size = new System.Drawing.Size(94, 20);
+            this.lbl_gep.Size = new System.Drawing.Size(98, 20);
             this.lbl_gep.TabIndex = 2;
-            this.lbl_gep.Text = "Szamítógép";
+            this.lbl_gep.Text = "Szamítógép:";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(99, 17);
+            this.label1.Location = new System.Drawing.Point(103, 17);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(51, 20);
             this.label1.TabIndex = 3;
@@ -91,29 +93,11 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(384, 17);
+            this.label3.Location = new System.Drawing.Point(388, 17);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(51, 20);
             this.label3.TabIndex = 4;
             this.label3.Text = "label3";
-            // 
-            // listBox1
-            // 
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.ItemHeight = 20;
-            this.listBox1.Location = new System.Drawing.Point(11, 9);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(186, 224);
-            this.listBox1.TabIndex = 5;
-            // 
-            // listBox2
-            // 
-            this.listBox2.FormattingEnabled = true;
-            this.listBox2.ItemHeight = 20;
-            this.listBox2.Location = new System.Drawing.Point(274, 9);
-            this.listBox2.Name = "listBox2";
-            this.listBox2.Size = new System.Drawing.Size(186, 224);
-            this.listBox2.TabIndex = 6;
             // 
             // lbl_gyoztes
             // 
@@ -133,6 +117,7 @@
             this.btn_ollo.TabIndex = 8;
             this.btn_ollo.Text = "Olló";
             this.btn_ollo.UseVisualStyleBackColor = true;
+            this.btn_ollo.Click += new System.EventHandler(this.btn_ollo_Click);
             // 
             // btn_papir
             // 
@@ -143,6 +128,7 @@
             this.btn_papir.TabIndex = 9;
             this.btn_papir.Text = "Papír";
             this.btn_papir.UseVisualStyleBackColor = true;
+            this.btn_papir.Click += new System.EventHandler(this.btn_papir_Click);
             // 
             // btn_ko
             // 
@@ -153,9 +139,11 @@
             this.btn_ko.TabIndex = 10;
             this.btn_ko.Text = "Kő";
             this.btn_ko.UseVisualStyleBackColor = true;
+            this.btn_ko.Click += new System.EventHandler(this.btn_ko_Click);
             // 
             // btn_kilep
             // 
+            this.btn_kilep.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btn_kilep.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.btn_kilep.Location = new System.Drawing.Point(8, 78);
             this.btn_kilep.Name = "btn_kilep";
@@ -201,13 +189,31 @@
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.SystemColors.InactiveCaption;
-            this.panel2.Controls.Add(this.listBox2);
-            this.panel2.Controls.Add(this.listBox1);
+            this.panel2.Controls.Add(this.pb_gep);
+            this.panel2.Controls.Add(this.pb_jatekos);
             this.panel2.Controls.Add(this.lbl_gyoztes);
             this.panel2.Location = new System.Drawing.Point(6, 88);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(471, 254);
             this.panel2.TabIndex = 15;
+            // 
+            // pb_gep
+            // 
+            this.pb_gep.Location = new System.Drawing.Point(276, 20);
+            this.pb_gep.Name = "pb_gep";
+            this.pb_gep.Size = new System.Drawing.Size(182, 213);
+            this.pb_gep.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pb_gep.TabIndex = 9;
+            this.pb_gep.TabStop = false;
+            // 
+            // pb_jatekos
+            // 
+            this.pb_jatekos.Location = new System.Drawing.Point(11, 20);
+            this.pb_jatekos.Name = "pb_jatekos";
+            this.pb_jatekos.Size = new System.Drawing.Size(182, 213);
+            this.pb_jatekos.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pb_jatekos.TabIndex = 8;
+            this.pb_jatekos.TabStop = false;
             // 
             // panel3
             // 
@@ -227,6 +233,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.CancelButton = this.btn_kilep;
             this.ClientSize = new System.Drawing.Size(484, 561);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel2);
@@ -241,6 +248,8 @@
             this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pb_gep)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pb_jatekos)).EndInit();
             this.panel3.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -254,8 +263,6 @@
         private System.Windows.Forms.Label lbl_gep;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.ListBox listBox1;
-        private System.Windows.Forms.ListBox listBox2;
         private System.Windows.Forms.Label lbl_gyoztes;
         private System.Windows.Forms.Button btn_ollo;
         private System.Windows.Forms.Button btn_papir;
@@ -266,6 +273,8 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.PictureBox pb_gep;
+        private System.Windows.Forms.PictureBox pb_jatekos;
     }
 }
 
